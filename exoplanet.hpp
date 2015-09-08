@@ -52,7 +52,7 @@ public:
 
         begin = ++pos;
         while (pos != end) { ++pos; }
-        double distance = atof(&(*begin));
+        double distance = /* *begin == '\n' || */ *begin == '\r' ? -1 : atof(&(*begin));
 
         return exoplanet(name, year, method, mass, separation, distance);
     }
