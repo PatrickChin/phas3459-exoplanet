@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp -o main -lcurl -std=c++11
+	g++ analyze_exoplanets.cpp -o analyze_exoplanets -lcurl -std=c++11
