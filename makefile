@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp -o main -lcurlpp -lcurl -std=c++11
+	g++ main.cpp -o main -lcurl -std=c++11

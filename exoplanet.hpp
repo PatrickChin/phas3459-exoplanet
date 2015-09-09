@@ -52,7 +52,7 @@ public:
 
         begin = ++pos;
         while (pos != end) { ++pos; }
-        double distance = /* *begin == '\n' || */ *begin == '\r' ? -1 : atof(&(*begin));
+        double distance = *begin < '\r' ? -1 : atof(&(*begin));
 
         return exoplanet(name, year, method, mass, separation, distance);
     }
@@ -62,15 +62,17 @@ public:
 
 class exoplanet_list
 {
-public:
-    exoplanet_list (const string &s)
-    {
-        int n = count(s.cbegin(), s.cend(), '\n');
-        v.reserve(n+1);
-    }
-
 private:
     vector<exoplanet> v;
+    string str;
+
+public:
+    exoplanet_list (const string &s, bool ignore_first_line)
+        : str(s)
+    {
+        int n = count(str.cbegin(), str.cend(), '\n');
+        v.reserve(n+1);
+    }
 };
 
 ostream &operator<<(ostream &os, const exoplanet p)
